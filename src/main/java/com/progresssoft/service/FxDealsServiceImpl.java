@@ -2,6 +2,7 @@ package com.progresssoft.service;
 
 import com.progresssoft.entity.FxDealEntity;
 import com.progresssoft.exceptions.*;
+import com.progresssoft.mapping.FxDealMapper;
 import com.progresssoft.model.FxDeal;
 import com.progresssoft.model.FxDealResponse;
 import com.progresssoft.repository.FxDealsRepository;
@@ -29,7 +30,7 @@ public class FxDealsServiceImpl implements FxDealsService {
         try {
             log.info("Adding FX Deal with ID: {}", fxDeal.getId());
             validateFxDeal(fxDeal);
-            FxDealEntity entity = new FxDealEntity().convertToEntity(fxDeal);
+            FxDealEntity entity = FxDealMapper.convertToEntity(fxDeal);
 
             fxDealRepository.findById(entity.getId())
                     .ifPresent(e -> {

@@ -5,6 +5,7 @@ import com.progresssoft.model.FxDealResponse;
 import com.progresssoft.service.FxDealsService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/deals")
 @RequiredArgsConstructor
 public class FxDealsController {
+    @Autowired
     private final FxDealsService fxDealsService;
 
     @GetMapping("/get/{id}")

@@ -1,6 +1,7 @@
 package com.progresssoft.entity;
 
 import com.progresssoft.model.FxDeal;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -21,19 +22,19 @@ import java.time.LocalDateTime;
 public class FxDealEntity {
 
     @Id
+    @Column(name="id")
     private Long id;
+
+    @Column(name="fromISOCurrency")
     private String fromISOCurrency;
+
+    @Column(name="toISOCurrency")
     private String toISOCurrency;
+
+    @Column(name="dealTimestamp")
     private LocalDateTime dealTimestamp;
+
+    @Column(name="amount")
     private BigDecimal amount;
 
-    public FxDealEntity convertToEntity(FxDeal fxDeal) {
-        return FxDealEntity.builder()
-                .id(Long.parseLong(fxDeal.getId()))
-                .fromISOCurrency(fxDeal.getFromISOCurrency())
-                .toISOCurrency(fxDeal.getToISOCurrency())
-                .dealTimestamp(LocalDateTime.parse(fxDeal.getDealTimestamp()))
-                .amount(fxDeal.getAmount())
-                .build();
-    }
 }
